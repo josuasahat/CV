@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contact Form</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            background: linear-gradient(135deg, #3f9fff, #6bd1ff);
+            background-image: url('moroccan-flower.png');
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+        }
+        .container {
+            background: white;
+            padding: 20px;
+            border-radius: 10px;
+            box-shadow: 0 0 18px rgba(0, 0, 0, 0.1);
+            width: 300px;
+        }
+        .hidden {
+            display: none;
+        }
+        h2 {
+            text-align: center;
+            color: #030313;
+        }
+        label {
+            display: block;
+            margin-top: 10px;
+        }
+        input, select, textarea {
+            width: 100%;
+            padding: 8px;
+            margin-top: 5px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+        }
+        .gender {
+            display: flex;
+            gap: 10px;
+        }
+        .gender label {
+            display: flex;
+            align-items: center;
+            gap: 5px;
+        }
+        .gender input {
+            appearance: none;
+            width: 18px;
+            height: 18px;
+            border: 2px solid black;
+            border-radius: 50%;
+            outline: none;
+            cursor: pointer;
+            position: relative;
+        }
+        .gender input:checked {
+            background-color: black;
+        }
+        .submit-btn {
+            width: 100%;
+            background: #01060b;
+            color: white;
+            border: none;
+            padding: 10px;
+            margin-top: 15px;
+            border-radius: 5px;
+            cursor: pointer;
+        }
+        .submit-btn:hover {
+            background: #2c2f31;
+        }
+        .thank-you {
+            text-align: center;
+            font-size: 16px;
+            font-weight: bold;
+            color: #030313;
+            margin-top: 10px;
+        }
+    </style>
+</head>
+<body>
+
+<div class="container" id="formContainer">
+    <h2>Contact Form</h2>
+    <form id="contactForm">
+        <label for="nama">Nama:</label>
+        <input type="text" id="nama" name="nama" required>
+
+        <label for="hp">No Hp/WA:</label>
+        <input type="text" id="hp" name="hp" required>
+
+        <label>Jenis Kelamin:</label>
+        <div class="gender">
+            <input type="radio" id="laki" name="gender" value="Laki-Laki" required>
+            <label for="laki">Laki-Laki</label>
+            <input type="radio" id="perempuan" name="gender" value="Perempuan">
+            <label for="perempuan">Perempuan</label>
+        </div>
+
+        <label for="pendidikan">Pendidikan:</label>
+        <select id="pendidikan" name="pendidikan">
+            <option value="SD">SD</option>
+            <option value="SMP">SMP</option>
+            <option value="SMA">SMA</option>
+            <option value="D3">D3</option>
+            <option value="S1">S1</option>
+            <option value="S2">S2</option>
+        </select>
+
+        <label for="email">E-mail:</label>
+        <input type="email" id="email" name="email" required>
+
+        <label for="keperluan">Saran:</label>
+        <textarea id="keperluan" name="keperluan" rows="3"></textarea>
+
+        <button type="submit" class="submit-btn">Submit</button>
+    </form>
+</div>
+
+<div class="container hidden" id="thankYouMessage">
+    <h2>Terima Kasih!</h2>
+    <p class="thank-you">Contact form berhasil dikirim.</p>
+</div>
+
+<script>
+    document.getElementById("contactForm").addEventListener("submit", function(event) {
+        event.preventDefault(); // Mencegah reload halaman
+        document.getElementById("formContainer").classList.add("hidden"); // Sembunyikan formulir
+        document.getElementById("thankYouMessage").classList.remove("hidden"); // Tampilkan pesan terima kasih
+    });
+</script>
+
+</body>
+</html>
